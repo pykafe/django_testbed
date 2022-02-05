@@ -5,6 +5,16 @@
     {% csrf_token %}
     <textarea name="text" rows=10 cols=100>{{ request.POST.text }}</textarea>
     <br />
-    <button>Count Words</button>
+    <button>wc from textarea</button>
 </form>
 {{ result }}
+
+<h2>File Upload</h2>
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="upload_file"></textarea>
+    <br />
+    <button>wc from upload</button>
+</form>
+
+{{ file_result }}
