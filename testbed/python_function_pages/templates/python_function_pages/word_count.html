@@ -1,0 +1,10 @@
+<a href="/">index</a>
+<h1> Word Count</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="text"></textarea>
+    <button>Count Words</button>
+</form>
+
+{{ result }}
