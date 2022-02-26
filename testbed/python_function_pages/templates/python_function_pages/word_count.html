@@ -1,12 +1,13 @@
 <a href="/">index</a>
-<h1> Word Count</h1>
+<h1>Word Count</h1>
 <h2>Text Area</h2>
 <form method="post">
     {% csrf_token %}
     <textarea name="text" rows=10 cols=100>{{ request.POST.text }}</textarea>
     <br />
-    <button>wc from textarea</button>
+    <button>Word Count from textarea</button>
 </form>
+
 {{ result }}
 
 <h2>File Upload</h2>
@@ -14,7 +15,7 @@
     {% csrf_token %}
     <input type="file" name="upload_file"></textarea>
     <br />
-    <button>wc from upload</button>
+    <button>Word Count from upload</button>
 </form>
 
 {{ file_result }}
