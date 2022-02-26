@@ -1,21 +1,30 @@
-<a href="/">index</a>
-<h1>Word Count</h1>
-<h2>Text Area</h2>
-<form method="post">
-    {% csrf_token %}
-    <textarea name="text" rows=10 cols=100>{{ request.POST.text }}</textarea>
-    <br />
-    <button>Word Count from textarea</button>
-</form>
+<html>
+<head>
 
-{{ result }}
+</head>
+<body>
+    
+    <a href="/">index</a>
+    <h1>Word Count</h1>
+    <h2>Text Area</h2>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="text" rows=10 cols=100>{{ request.POST.text }}</textarea>
+        <br />
+        <button>Word Count from textarea</button>
+    </form>
 
-<h2>File Upload</h2>
-<form method="post"  enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="upload_file"></textarea>
-    <br />
-    <button>Word Count from upload</button>
-</form>
+    {{ result }}
 
-{{ file_result }}
+    <h2>File Upload</h2>
+    <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="upload_file"></textarea>
+        <br />
+        <button>Word Count from upload</button>
+    </form>
+
+    {{ file_result }}
+
+</body>
+</html>
