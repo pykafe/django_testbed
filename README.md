@@ -7,6 +7,6 @@ As we write small python functions as part of learning python, we can create pag
 # Instructions
 
 - Create a python 3.8+ vitual environment and activate it
-- Install the requirements
+- Install the requirements. Run `pip install -r requirements.txt`
 - Run `./manage.py migrate`
 - Run `./manage.py runserver`
