@@ -1,5 +1,8 @@
 from urllib import request
+from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 from .models import Project
 from .libraries.word_count import wc
@@ -43,8 +46,18 @@ class ValidSpacingView(TemplateView):
         context['result'] = getattr(self, 'result', "Submit the form to see the valid spacing result")
         return context
 
+
 class ProjectListView(TemplateView):
     template_name = "python_function_pages/project_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['projects'] = Project.objects.all()
+        return context
+
+
+class ProjectApproveView(TemplateView):
+    template_name = "python_function_pages/project_approval_fragment.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -8,12 +8,18 @@
         {% if perms.python_function_pages.view_project %}
             <ul>
             {% for project in projects %}
-                <li><strong>{{ project.name }}</strong> - {{ project.description }}</li>
+                <li>
+                    <strong>{{ project.name }}</strong>
+                    {% if perms.python_function_pages.approve_project %}
+                    <button hx-get='/approve_project' hx-swap="innerHTML"> Approve </button>
+                    {% endif %}
+                </li>
             {% endfor %}
             </ul>
         {% else %}
             <span> Sorry, you do not have permission to view projects. </span>
         {% endif %}
     {% endif %}
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     </body>
 </html>

@@ -7,13 +7,13 @@ class Project(models.Model):
 
     class Meta:
         permissions = [
-            ("project_approve", "Can approve projects"),
+            ("approve_project", "Can approve projects"),
         ]
 
     name = models.CharField(
-        max_length=64, unique=True, null=False, blank=False, 
+        max_length=64, unique=True, null=False, blank=False,
         help_text="the name of the catlapa project")
-    
+
     description = models.TextField(
         null=True, blank=True,
         help_text="Shart description of the project"
