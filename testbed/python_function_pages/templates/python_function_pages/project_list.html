@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title> Project List </title>
+    </head>
+    <body>
+    {% if user.is_authenticated %}
+        <h1> Project List</h1>
+        {% if perms.python_function_pages.view_project %}
+            <ul>
+            {% for project in projects %}
+                <li><strong>{{ project.name }}</strong> - {{ project.description }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <span> Sorry, you do not have permission to view projects. </span>
+        {% endif %}
+    {% endif %}
+    </body>
+</html>
