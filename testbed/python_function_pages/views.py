@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 from .libraries.word_count import wc
 from .libraries.valid_spacing import valid_spacing
 
+
 class IndexView(TemplateView):
     template_name = "python_function_pages/index.html"
 
