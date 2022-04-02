@@ -1,2 +1,21 @@
-<a href="{% url 'word_count' %}">Word count</a>
-<a href="{% url 'valid_spacing' %}">Valid Spacing</a>
+<html>
+    <head><title>Testbed</title></head>
+    <body>
+        <div id="tabs" hx-target="#tab-contents" _="on htmx:afterOnLoad take .selected for event.target">
+            <a hx-get="/word_count" class="selected">Word Count</a>
+            <a hx-get="/valid_spacing">Valid Spacing</a>
+            <a hx-get="/project_list">Project List</a>
+        </div>
+
+        <div id="tab-contents" hx-get="/word_count" hx-trigger="load"></div>
+
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <style>
+
+            div#tabs {
+              display:block;
+            }
+
+        </style>
+      </body>
+</html>
