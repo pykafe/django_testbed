@@ -1,7 +1,7 @@
 <a href="/">index</a>
 <h1> Word Count</h1>
 <h2>Text Area</h2>
-<form method="post">
+<form action="{% url 'word_count' %}" method="post">
     {% csrf_token %}
     <textarea name="text" rows=10 cols=100>{{ request.POST.text }}</textarea>
     <br />

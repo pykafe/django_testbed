@@ -1,8 +1,5 @@
-<html>
-    <head>
-        <title> Project List </title>
-    </head>
-    <body>
+<a href="/">index</a>
+<div class="project">
     {% if user.is_authenticated %}
         <h1> Project List</h1>
         {% if perms.python_function_pages.view_project %}
@@ -11,7 +8,7 @@
                 <li>
                     <strong>{{ project.name }}</strong>
                     {% if perms.python_function_pages.approve_project %}
-                    <button hx-get='/approve_project' hx-swap="innerHTML"> Approve </button>
+                    <button hx-get="{% url 'approve_project' %}" hx-swap="innerHTML"> Approve </button>
                     {% endif %}
                 </li>
             {% endfor %}
@@ -21,5 +18,4 @@
         {% endif %}
     {% endif %}
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-    </body>
-</html>
+</div>

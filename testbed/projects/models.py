@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Project(models.Model):
     """This represents a catalpa project"""
