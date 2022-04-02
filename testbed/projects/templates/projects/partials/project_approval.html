@@ -1,0 +1,28 @@
+<span>
+    {{ project.get_approval_status_display }}
+
+    {% if project.approval_status != 'approved' %}
+        {% if perms.python_function_pages.approve_project %}
+        <button 
+            hx-post="{% url 'approve_project' pk=project.pk %}"
+            hx-include="[name=csrfmiddlewaretoken]"
+            hx-swap="innerHTML"
+            hx-target="closest span"
+            >
+            Approve 
+        </button>
+        {% endif %}
+    {% endif %}
+    {% if project.approval_status != 'rejected' %}
+        {% if perms.python_function_pages.approve_project %}
+        <button 
+            hx-post="{% url 'reject_project' pk=project.pk %}"
+            hx-include="[name=csrfmiddlewaretoken]"
+            hx-swap="innerHTML"
+            hx-target="closest span"
+            >
+            Reject 
+        </button>
+        {% endif %}
+    {% endif %}
+</span>
