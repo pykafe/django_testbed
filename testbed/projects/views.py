@@ -1,4 +1,4 @@
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 
@@ -46,3 +46,10 @@ class ProjectDeleteView(DeleteView):
     model = Project
     success_url = reverse_lazy('project_list')
     template_name = "projects/partials/project_confirm_delete.html"
+
+
+class ProjectCreateView(CreateView):
+    model = Project
+    fields = ['name', 'description', 'start_date']
+    success_url = reverse_lazy('project_list')
+    template_name = "projects/partials/create.html"
