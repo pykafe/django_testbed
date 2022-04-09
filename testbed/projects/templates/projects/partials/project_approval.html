@@ -5,7 +5,7 @@
         {% if perms.python_function_pages.approve_project %}
         <button 
             hx-post="{% url 'approve_project' pk=project.pk %}"
-            hx-include="[name=csrfmiddlewaretoken]"
+            hx-include="input[name=csrfmiddlewaretoken]"
             hx-swap="innerHTML"
             hx-target="closest span"
             >

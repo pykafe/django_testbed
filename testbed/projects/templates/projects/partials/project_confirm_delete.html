@@ -1,0 +1,8 @@
+Are you sure you wish to delete? 
+<button
+    hx-post="{% url 'delete_project' pk=project.id %}"
+    hx-include="input[name=csrfmiddlewaretoken]"
+    hx-target="closest body"
+>
+    Confirm
+</button>

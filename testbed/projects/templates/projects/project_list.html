@@ -1,6 +1,8 @@
 <a href="/">index</a>
 <div class="project">
+    
     {% csrf_token %}
+    
     {% if user.is_authenticated %}
         <h1> Project List</h1>
         {% if perms.python_function_pages.view_project %}
@@ -11,6 +13,7 @@
                     
                     {% include 'projects/partials/project_approval.html' %}
 
+                    {% include 'projects/partials/project_deletion.html' %}
                 </li>
             {% endfor %}
             </ul>

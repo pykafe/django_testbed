@@ -41,6 +41,8 @@ class ProjectRejectView(ProjectApprovalStatusBaseView):
 class ProjectApproveView(ProjectApprovalStatusBaseView):
     new_approval_status = Project.APPROVAL_APPROVED
 
+
 class ProjectDeleteView(DeleteView):
     model = Project
     success_url = reverse_lazy('project_list')
+    template_name = "projects/partials/project_confirm_delete.html"
