@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.views.generic.edit import DeleteView
 from django.views.generic.base import TemplateView
+from django.urls import reverse_lazy
+
 from .models import Project
 
 
@@ -38,3 +40,7 @@ class ProjectRejectView(ProjectApprovalStatusBaseView):
 
 class ProjectApproveView(ProjectApprovalStatusBaseView):
     new_approval_status = Project.APPROVAL_APPROVED
+
+class ProjectDeleteView(DeleteView):
+    model = Project
+    success_url = reverse_lazy('project_list')

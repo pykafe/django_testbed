@@ -1,4 +1,7 @@
-<a href="/">index</a>
+{% extends 'python_function_pages/index.html' %}
+
+{% block function_content %}
+
 <h1>Valid Spacing</h1>
 <a href="https://www.codewars.com/kata/5f77d62851f6bc0033616bd8">from kata</a>
 <br>
@@ -13,3 +16,5 @@ For this kata, the definition of valid spacing is one space between words, and n
 </form>
 
 {{ result }}
+
+{% endblock %}
