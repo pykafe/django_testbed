@@ -1,4 +1,5 @@
-from django.views.generic.edit import CreateView, DeleteView
+from django.shortcuts import redirect, render
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 
@@ -50,6 +51,20 @@ class ProjectDeleteView(DeleteView):
 
 class ProjectCreateView(CreateView):
     model = Project
-    fields = ['name', 'description', 'start_date']
+    fields = ['name', 'description', 'start_date', 'end_date']
     success_url = reverse_lazy('project_list')
     template_name = "projects/partials/create.html"
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    fields = ['name', 'description', 'start_date', 'end_date']
+    success_url = reverse_lazy('project_list')
+    template_name = "projects/partials/update.html"
+    
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        # not redirect, but render the project row, with the updated project
+        return render(self.request, "projects/partials/project_row.html", {'project': self.object})

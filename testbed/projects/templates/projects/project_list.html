@@ -1,20 +1,21 @@
 <a href="/">index</a>
 <div class="project">
-    
     {% csrf_token %}
     
     {% if user.is_authenticated %}
         <h1> Project List</h1>
+        
+        <button
+            hx-get="{% url 'create_project' %}"
+            hx-swap="outerHTML"
+        >
+            Add
+        </button>
+        
         {% if perms.python_function_pages.view_project %}
             <ul>
             {% for project in projects %}
-                <li>
-                    <strong>{{ project.name }}</strong>
-                    
-                    {% include 'projects/partials/project_approval.html' %}
-
-                    {% include 'projects/partials/project_deletion.html' %}
-                </li>
+                {% include "projects/partials/project_row.html" %}
             {% endfor %}
             </ul>
         {% else %}
