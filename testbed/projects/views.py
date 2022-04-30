@@ -12,6 +12,7 @@ class ProjectListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['projects'] = Project.objects.all()
+        context['organisation_name'] = 'Catalpa'
         return context
 
 
@@ -54,6 +55,12 @@ class ProjectCreateView(CreateView):
     fields = ['name', 'description', 'start_date', 'end_date']
     success_url = reverse_lazy('project_list')
     template_name = "projects/partials/create.html"
+
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        # not redirect, but render the project row, with the updated project
+        return render(self.request, "projects/partials/project_row.html", {'project': self.object})
+
 
 class ProjectUpdateView(UpdateView):
     model = Project

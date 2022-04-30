@@ -20,6 +20,7 @@ from .views import IndexView
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('python_functions/', include('python_function_pages.urls')),
     path('projects/', include('projects.urls'))

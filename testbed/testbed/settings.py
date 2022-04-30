@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import django.conf.locale
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,8 +106,27 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
+EXTRA_LANG_INFO = {
+    "tm": {
+        "bidi": False,  # right-to-left
+        "code": "tm",
+        "name": "Tetum",
+        "name_local": "Tetum",  # unicode codepoints here
+    },
+}
+
+# Add custom languages not provided by Django
+django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
+
+LOCALE_PATHS = (BASE_DIR / "locale",)
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('tm', 'Tetum'),
+    ('pt', 'Portugues'),
+]
 
 TIME_ZONE = 'Asia/Dili'
 

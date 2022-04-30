@@ -3,6 +3,9 @@
 
     </head>
     <body>
+        <nav>
+            {% include 'testbed/language_select.html' %}
+        </nav>
 
         {% block content %}
             <a href="{% url 'functions_index' %}">Python</a>
