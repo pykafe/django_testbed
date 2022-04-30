@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-30 10:42+0900\n"
+"POT-Creation-Date: 2022-04-30 11:01+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/registration/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:25
+msgid "User name"
+msgstr ""
+
+#: templates/registration/login.html:29
+msgid "Password"
+msgstr ""
+
+#: templates/registration/login.html:33
+msgid "login"
+msgstr ""
+
+#: templates/registration/login.html:39
+msgid "Lost password?"
+msgstr ""
 
 #: templates/testbed/language_select.html:15
 msgid "Change Language"
