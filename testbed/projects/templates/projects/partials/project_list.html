@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<h1>
+    {% translate "Project List" %}
+</h1>
+
+<button
+    hx-get="{% url 'create_project' %}"
+    hx-target="#main_content"
+    hx-swap="innerHTML"
+>
+    {% translate "Add" %}
+</button>
+
+{% if perms.python_function_pages.view_project %}
+<ul>
+    {% for project in projects %}
+        {% include "projects/partials/project_row.html" %}
+    {% endfor %}
+</ul>
+{% else %}
+<span> Sorry, you do not have permission to view projects. </span>
+{% endif %}
