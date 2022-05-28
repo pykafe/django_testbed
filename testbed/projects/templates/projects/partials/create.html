@@ -1,0 +1,7 @@
+<form
+    hx-post="{% url 'create_project' %}"
+    hx-include="input[name=csrfmiddlewaretoken]"
+    hx-target="closest body">
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>

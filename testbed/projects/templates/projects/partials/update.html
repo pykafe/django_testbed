@@ -1,0 +1,7 @@
+<form
+    hx-post="{% url 'update_project' pk=project.id %}"
+    hx-include="input[name=csrfmiddlewaretoken]"
+    hx-target="closest .project">
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>

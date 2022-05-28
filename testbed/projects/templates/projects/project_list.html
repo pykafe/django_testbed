@@ -1,0 +1,45 @@
+{% extends 'testbed/index.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="project">
+        <h1>
+            {% blocktranslate trimmed %}
+            {{ organisation_name }} Projects
+            {% endblocktranslate %}
+        </h1>
+        <p>
+            {% blocktranslate trimmed %}
+                Manage the list of {{ organisation_name }} Projects
+            {% endblocktranslate %}
+        </p>
+        {% csrf_token %}
+        
+        {% if user.is_authenticated %}
+            <h1> Project List</h1>
+            
+            <button
+                hx-get="{% url 'create_project' %}"
+                hx-swap="outerHTML"
+            >
+                Add
+            </button>
+            
+            {% if perms.python_function_pages.view_project %}
+                <ul>
+                {% for project in projects %}
+                    {% include "projects/partials/project_row.html" %}
+                {% endfor %}
+                </ul>
+            {% else %}
+                <span> Sorry, you do not have permission to view projects. </span>
+            {% endif %}
+        {% else %}
+            
+            {% blocktranslate trimmed %}
+                Not authenticated
+            {% endblocktranslate %}
+        {% include 'testbed/user.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

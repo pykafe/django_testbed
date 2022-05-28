@@ -1,0 +1,15 @@
+    {% load i18n %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}?next={{ request.path }}">
+        <button href="">
+            {% translate 'Logout' %}
+        </button>
+    </a>
+    {% else %}
+    <a hx-get="{% url 'htmx_login' %}" hx-swap="outerHTML"
+        >
+        <button href="">
+            {% translate 'Login' %}
+        </button>
+    </a>
+    {% endif %}

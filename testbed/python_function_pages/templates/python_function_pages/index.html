@@ -1,1 +1,11 @@
-<a href="{% url 'word_count' %}">Word count</a>
+{% extends "testbed/index.html" %}
+
+{% block content %}
+    <a href="{% url 'functions_index' %} ">Functions index</a>
+
+    {% block function_content %}
+    <a href="{% url 'word_count' %}">Word count</a>
+    <a href="{% url 'valid_spacing' %}">Valid Spacing</a>
+    {% endblock %}
+    
+{% endblock %}

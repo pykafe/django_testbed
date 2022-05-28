@@ -16,7 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import IndexView, HtmxLogin
+
 urlpatterns = [
+    path('', IndexView.as_view(), name="index"),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('htmx/login/', HtmxLogin.as_view(), name="htmx_login"),
     path('admin/', admin.site.urls),
-    path('', include('python_function_pages.urls'))
+    path('python_functions/', include('python_function_pages.urls')),
+    path('projects/', include('projects.urls'))
 ]

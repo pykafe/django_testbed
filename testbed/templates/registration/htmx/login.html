@@ -1,0 +1,17 @@
+{% load i18n %}
+
+  {% if form.errors %}
+    <p>
+        {% translate "Your username and password didn't match. Please try again." %}
+    </p>
+  {% endif %}
+  <form hx-post="{% url 'htmx_login' %}">
+    {% csrf_token %}
+    <span>{% translate "User name" %}</span>
+    <span>{{ form.username }}</span>
+    <span>{% translate "Password" %}</span>
+    <span>{{ form.password }}</span>
+    <button type="submit">
+        {% translate 'login' %}
+    </button>
+  </form>
