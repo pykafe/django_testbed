@@ -1,16 +1,7 @@
 {% load i18n %}
 
 <h4>{% translate "Are you sure?" %}</h4><br/>
-{% translate "Are you sure you want to delete the project" %} {{ project.name }}? {% translate "All of the following related items will be deleted:" %}
-<br/>
-<b>{% translate "Summary" %}</b><br/>
-<ul>
-    <li>{% translate "Projects:" %} {{ project.id }}</li><br/>
-</ul>
-<b>{% translate "Objects" %}</b><br/>
-<ul>
-    <li>{% translate "Project:" %} {{ project.name }}</li> <br/>
-</ul>
+{% translate "Are you sure you want to delete the project" %} {{ project.name }}?
 
 <button
     hx-post="{% url 'delete_project' pk=project.id %}"
@@ -20,7 +11,7 @@
     {% translate "Yes, I'm sure" %}
 </button>
 <button
-    hx-get="#main_content"
+    hx-get=""
     hx-target="closest body"
 >
     {% translate "No, take me back" %}
