@@ -89,4 +89,12 @@ class ProjectUpdateView(UpdateView):
     def form_valid(self, form):
         redirect = super().form_valid(form)
         # not redirect, but render the project row, with the updated project
-        return render(self.request, "projects/partials/project_row.html", {'project': self.object})
+        template = "projects/partials/project_list.html" 
+        context = dict(
+            projects=Project.objects.all()
+        )
+        return render(
+            self.request, 
+            template, 
+            context
+        )
