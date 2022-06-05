@@ -1,7 +1,12 @@
+{% load i18n %}
 <form
-    hx-post="{% url 'create_project' %}"
     hx-include="input[name=csrfmiddlewaretoken]"
-    hx-target="closest body">
+    hx-target="#main_content">
     {{ form.as_p }}
-    <input type="submit" value="Save">
+    <button
+        hx-post="{% url 'create_project' %}"
+    >{% translate 'Save' %}</button>
+    <button
+        hx-post="{% url 'create_project' %}?add_another=true"
+    >{% translate 'Save and add another' %}</button>
 </form>

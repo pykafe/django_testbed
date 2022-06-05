@@ -1,8 +1,18 @@
-Are you sure you wish to delete? 
+{% load i18n %}
+
+<h4>{% translate "Are you sure?" %}</h4><br/>
+{% translate "Are you sure you want to delete the project" %} {{ project.name }}?
+
 <button
     hx-post="{% url 'delete_project' pk=project.id %}"
     hx-include="input[name=csrfmiddlewaretoken]"
     hx-target="closest body"
 >
-    Confirm
+    {% translate "Yes, I'm sure" %}
+</button>
+<button
+    hx-get=""
+    hx-target="closest body"
+>
+    {% translate "No, take me back" %}
 </button>

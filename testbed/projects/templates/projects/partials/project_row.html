@@ -1,4 +1,4 @@
-
+{% load i18n %}
 <li class="project">
     <strong>{{ project.name }}</strong>
     
@@ -9,7 +9,7 @@
     <button 
         hx-get="{% url 'update_project' pk=project.id %}"
         hx-swap="innerHTML"
-        hx-target="closest .project">
-        Edit
+        hx-target="#main_content">
+        {% translate "Edit" %}
     </button>
 </li>

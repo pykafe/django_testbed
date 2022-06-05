@@ -7,7 +7,7 @@ from .models import Project
 
 
 class ProjectListView(TemplateView):
-    template_name = "projects/project_list.html"
+    template_name = "projects/project.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -59,7 +59,22 @@ class ProjectCreateView(CreateView):
     def form_valid(self, form):
         redirect = super().form_valid(form)
         # not redirect, but render the project row, with the updated project
-        return render(self.request, "projects/partials/project_row.html", {'project': self.object})
+        if "add_another" in self.request.GET:
+            template = "projects/partials/create.html" 
+            form_class=self.get_form_class()
+            context = dict(
+                form=form_class()
+            )
+        else:
+            template = "projects/partials/project_list.html" 
+            context = dict(
+                projects=Project.objects.all()
+            )
+        return render(
+            self.request, 
+            template, 
+            context
+        )
 
 
 class ProjectUpdateView(UpdateView):
@@ -74,4 +89,12 @@ class ProjectUpdateView(UpdateView):
     def form_valid(self, form):
         redirect = super().form_valid(form)
         # not redirect, but render the project row, with the updated project
-        return render(self.request, "projects/partials/project_row.html", {'project': self.object})
+        template = "projects/partials/project_list.html" 
+        context = dict(
+            projects=Project.objects.all()
+        )
+        return render(
+            self.request, 
+            template, 
+            context
+        )

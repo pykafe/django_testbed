@@ -1,6 +1,8 @@
+{% load i18n %}
 <button
     hx-get="{% url 'delete_project' pk=project.id %}"
     hx-swap="outerHTML"
+    hx-target="#main_content"
 >
-    Delete
+    {% translate "Delete" %}
 </button>
