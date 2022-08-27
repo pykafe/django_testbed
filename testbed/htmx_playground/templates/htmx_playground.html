@@ -1,1 +1,16 @@
-<p>Hello World</p>
+<html>
+<head>
+    <title> HTMX Playground </title>
+    <script src="https://unpkg.com/htmx.org@1.8.0"></script>
+</head>
+
+<body>
+    <header>Hello World</header>
+
+    <button hx-get='/playground/random' hx-target="#content">Get Random Number</button>
+
+    <div id="content">
+        <p>Your Random Number will be here!</p>
+    </div>
+</body>
+</html>
