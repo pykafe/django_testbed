@@ -7,10 +7,7 @@
 <body>
     <header>Hello World</header>
 
-    <button hx-get='/playground/random' hx-target="#content">Get Random Number</button>
-
-    <div id="content">
-        <p>Your Random Number will be here!</p>
-    </div>
+    <a hx-get='/playground/' hx-target="#content">Get Random Number</a>
+    {% include 'partial__random_number.html' %}
 </body>
 </html>

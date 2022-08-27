@@ -5,11 +5,13 @@ import random
 
 
 class IndexView(TemplateView):
-    template_name = "htmx_playground.html"
 
-
-class RandomNumberView(TemplateView):
-    template_name = "partial__random_number.html"
+    def get_template_names(self):
+        request = self.request.headers.get('HX-Request') == 'true'
+        if request:
+            return "partial__random_number.html"
+        else:
+            return "htmx_playground.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)

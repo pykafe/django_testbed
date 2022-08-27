@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import IndexView, RandomNumberView
+from .views import IndexView
 
 urlpatterns = [
     path('', IndexView.as_view()),
-    path('random', RandomNumberView.as_view()),
 ]
