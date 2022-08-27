@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'htmx_playground',
     'python_function_pages',
     'django.contrib.admin',
     'django.contrib.auth',

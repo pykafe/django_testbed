@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('python_function_pages.urls'))
+    path('', include('python_function_pages.urls')),
+    path('playground/', include('htmx_playground.urls')),
 ]
