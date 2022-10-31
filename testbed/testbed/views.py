@@ -10,7 +10,9 @@ class HtmxLogin(LoginView):
     template_name = "registration/htmx/login.html"
     def form_valid(self, form):
         old_redirect = super().form_valid(form)
-        return render(
+        response = render(
             self.request,
             "testbed/user.html",
         )
+        response['HX-Redirect'] = self.request.headers['Hx-Current-Url']
+        return response
